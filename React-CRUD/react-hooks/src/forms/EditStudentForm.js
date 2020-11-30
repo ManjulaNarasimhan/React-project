@@ -23,7 +23,7 @@ const EditStudentForm = (props) => {
                 <input type="text" className="form-control" name="lastName" defaultValue={student.lastName} onBlur={handleInputChange}/>
             </div>  
             <div>
-                <label><input type="checkbox" name="enrolled" checked={student.enrolled} defaultValue={student.enrolled} onBlur={handleInputChange}/>  Enrolled: </label>
+                <label><input type="checkbox" name="enrolled" defaultChecked={student.enrolled} defaultValue={student.enrolled} onBlur={handleInputChange}/>  Enrolled: </label>
             </div> 
             <button type="submit" className="btn btn-primary">Update Student</button>   
             <button onClick={() => props.setEditing(false)} className="btn btn-link">Cancel</button> 

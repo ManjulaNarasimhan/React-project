@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css';
 import './StudentTable'
 import StudentTable from './StudentTable'
@@ -30,11 +30,20 @@ const App = () => {
   const initialFormState = {id:null, firstname: '', lastName:'', enrolled:false}
 
   const [editing, setEditing] = useState(false) 
-  const [students, setStudents] = useState(studentsData);
+  const localStorageValue = JSON.parse(localStorage.getItem("students"))
+  console.log("localStorage::::" + localStorageValue);
+  const [students, setStudents] = useState(
+    localStorageValue || studentsData
+  );
   const [currentStudent, setCurrentStudent] = useState(initialFormState)
 
+  useEffect(() => {
+    const json =  JSON.stringify(students)
+    localStorage.setItem("students", json)
+  },[students])
 
   const addStudent = (student) => {
+    setEditing(false)
     student.id = students.length + 1
     setStudents([...students, student])
   }
@@ -72,7 +81,7 @@ const App = () => {
             ):(
               <div>
               <h4 className="bg-secondary text-white text-center">ADD STUDENT</h4>
-              <AddStudentForm addStudent={addStudent} />
+              <AddStudentForm setEditing={setEditing} addStudent={addStudent} />
             </div>
             )
           }

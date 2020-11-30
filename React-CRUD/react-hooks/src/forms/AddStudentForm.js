@@ -7,7 +7,9 @@ const initialFormState = {id:null, firstName:'', lastName:'', enrolled: false}
 const[student, setStudent] = useState(initialFormState);
 
 const handleInputChange = (event) => {
-    const {name, value} = event.target
+    console.log(event.target.name + " " + event.target.value)
+    let {name, value} = event.target
+    value = (name === "enrolled") ? Boolean(value) : value
     setStudent({...student, [name]: value})
 }
 
@@ -19,6 +21,8 @@ const handleInputChange = (event) => {
 
             props.addStudent(student)
             setStudent(initialFormState)
+            
+            event.target.reset()
             }}>
             <div>
                 <label>First Name:</label>
@@ -29,7 +33,7 @@ const handleInputChange = (event) => {
                 <input type="text" className="form-control" name="lastName" defaultValue={student.lastName} onBlur={handleInputChange}/>
             </div>  
             <div>
-                <label><input type="checkbox" name="enrolled" checked={student.enrolled} defaultValue="false" onBlur={handleInputChange}/>  Enrolled: </label>
+                <label><input type="checkbox" name="enrolled" defaultChecked={student.enrolled} defaultValue={student.enrolled} onBlur={handleInputChange}/>  Enrolled: </label>
             </div> 
             <button type="submit" className="btn btn-primary">Add Student</button>
         </form>
