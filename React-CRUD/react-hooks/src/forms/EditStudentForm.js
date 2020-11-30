@@ -16,11 +16,11 @@ const EditStudentForm = (props) => {
         >
             <div>
                 <label>First Name:</label>
-                <input type="text" className="form-control" name="firstName" defaultValue={student.firstName} onBlur={handleInputChange}/>
+                <input type="text" title="First Name is Required" className="form-control" name="firstName" defaultValue={student.firstName} onBlur={handleInputChange}/>
             </div>         
             <div>
                 <label>Last Name:</label>
-                <input type="text" className="form-control" name="lastName" defaultValue={student.lastName} onBlur={handleInputChange}/>
+                <input type="text" title="Last Name is Required" className="form-control" name="lastName" defaultValue={student.lastName} onBlur={handleInputChange}/>
             </div>  
             <div>
                 <label><input type="checkbox" name="enrolled" defaultChecked={student.enrolled} defaultValue={student.enrolled} onBlur={handleInputChange}/>  Enrolled: </label>

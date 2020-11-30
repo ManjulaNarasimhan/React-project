@@ -2,9 +2,6 @@ import React from 'react'
 
 const StudentTable = (props) => (
   <table className="table table-striped">
-    {
-    console.log(props.students + "=========" + typeof(props.students))
-    }
     <thead>
       <tr>
         <th>First Name</th>
